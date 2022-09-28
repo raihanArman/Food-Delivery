@@ -1,4 +1,4 @@
-package com.randev.food_delivery.screen
+package com.randev.food_delivery.screen.sign_in
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -11,15 +11,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,8 +28,6 @@ import com.randev.food_delivery.ui.components.space.VerticalSpace
 import com.randev.food_delivery.ui.components.text.TextBold
 import com.randev.food_delivery.ui.components.textfield.TextFieldCustom
 import com.randev.food_delivery.ui.theme.FoodDeliveryTheme
-import com.randev.food_delivery.ui.theme.PrimaryColor
-import com.randev.food_delivery.ui.theme.TextColor
 
 /**
  * @author Raihan Arman
@@ -40,7 +35,7 @@ import com.randev.food_delivery.ui.theme.TextColor
  */
 
 @Composable
-fun SignUpScreen() {
+fun SignInScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -110,8 +105,8 @@ fun SignUpScreen() {
 
 @Preview
 @Composable
-fun PreviewSignUpScreen() {
+fun PreviewSignInScreen() {
     FoodDeliveryTheme {
-        SignUpScreen()
+        SignInScreen()
     }
 }

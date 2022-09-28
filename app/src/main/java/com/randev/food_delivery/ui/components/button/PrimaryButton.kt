@@ -3,9 +3,13 @@ package com.randev.food_delivery.ui.components.button
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -31,36 +35,41 @@ import com.randev.food_delivery.ui.theme.Shapes
 
 @Composable
 fun PrimaryButton(
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier.width(157.dp),
     onClick: () -> Unit,
     text: String
 ) {
     val gradient =
         Brush.horizontalGradient(listOf(PrimaryColorGradient, PrimaryColor))
 
-    Button(
-        modifier = modifier
-            .height(57.dp),
-        shape = Shapes.large,
-        onClick = onClick,
-        contentPadding = PaddingValues(),
-        colors = ButtonDefaults.buttonColors(
-            backgroundColor = Color.Transparent
-        )
+    Box(
+        modifier = modifier,
+        contentAlignment = Alignment.Center
     ){
-        Box(
+        Button(
             modifier = Modifier
-                .fillMaxSize()
-                .background(gradient)
-                .then(modifier),
-            contentAlignment = Alignment.Center
-        ){
-            Text(
-                text = text,
-                color = Color.White,
-                fontFamily = MaterialTheme.typography.h4.fontFamily,
-                fontSize = 16.sp
+                .height(57.dp),
+            shape = Shapes.large,
+            onClick = onClick,
+            contentPadding = PaddingValues(),
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Transparent
             )
+        ){
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(gradient)
+                    .then(modifier),
+                contentAlignment = Alignment.Center
+            ){
+                Text(
+                    text = text,
+                    color = Color.White,
+                    fontFamily = MaterialTheme.typography.h4.fontFamily,
+                    fontSize = 16.sp
+                )
+            }
         }
     }
 }

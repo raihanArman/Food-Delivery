@@ -15,7 +15,7 @@ import com.randev.food_delivery.ui.theme.TextColor
  */
 
 @Composable
-fun TextBold(
+fun TextDescription(
     modifier: Modifier = Modifier,
     text: String,
     textSize: TextUnit,
@@ -24,7 +24,7 @@ fun TextBold(
     Text(
         modifier = modifier,
         text = text,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.Light,
         fontSize = textSize,
         color = TextColor,
         textAlign = textAlign
