@@ -1,4 +1,4 @@
-package com.randev.food_delivery.screen.upload_photo
+package com.randev.food_delivery.screen.auth.upload_photo
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

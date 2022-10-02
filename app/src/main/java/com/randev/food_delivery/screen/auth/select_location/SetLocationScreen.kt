@@ -1,4 +1,4 @@
-package com.randev.food_delivery.screen.select_location
+package com.randev.food_delivery.screen.auth.select_location
 
 import android.Manifest
 import android.content.Context
@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import com.randev.food_delivery.R
-import com.randev.food_delivery.screen.payment.PaymentMethodItem
+import com.randev.food_delivery.screen.auth.payment.PaymentMethodItem
 import com.randev.food_delivery.ui.components.button.BackButton
 import com.randev.food_delivery.ui.components.button.PrimaryButton
 import com.randev.food_delivery.ui.components.button.SecondaryButton

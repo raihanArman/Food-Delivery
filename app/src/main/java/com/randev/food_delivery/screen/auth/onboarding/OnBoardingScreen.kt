@@ -1,4 +1,4 @@
-package com.randev.food_delivery.screen.onboarding
+package com.randev.food_delivery.screen.auth.onboarding
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -20,7 +20,7 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.randev.food_delivery.R
 import com.randev.food_delivery.data.onBoardingList
-import com.randev.food_delivery.screen.onboarding.components.OnBoardingItem
+import com.randev.food_delivery.screen.auth.onboarding.components.OnBoardingItem
 import com.randev.food_delivery.ui.components.button.PrimaryButton
 import com.randev.food_delivery.ui.components.space.VerticalSpace
 import com.randev.food_delivery.ui.theme.FoodDeliveryTheme

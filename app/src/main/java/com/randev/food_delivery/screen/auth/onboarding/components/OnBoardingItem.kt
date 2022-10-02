@@ -1,4 +1,4 @@
-package com.randev.food_delivery.screen.onboarding.components
+package com.randev.food_delivery.screen.auth.onboarding.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column

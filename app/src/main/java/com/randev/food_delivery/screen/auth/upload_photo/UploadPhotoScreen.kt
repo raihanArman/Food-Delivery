@@ -1,4 +1,4 @@
-package com.randev.food_delivery.screen.upload_photo
+package com.randev.food_delivery.screen.auth.upload_photo
 
 import android.Manifest
 import android.content.Context
@@ -41,7 +41,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import coil.compose.AsyncImage
 import com.randev.food_delivery.R
-import com.randev.food_delivery.screen.payment.PaymentMethodItem
+import com.randev.food_delivery.screen.auth.payment.PaymentMethodItem
 import com.randev.food_delivery.ui.components.button.BackButton
 import com.randev.food_delivery.ui.components.button.PrimaryButton
 import com.randev.food_delivery.ui.components.text.TextBold

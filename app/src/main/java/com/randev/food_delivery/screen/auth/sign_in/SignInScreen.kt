@@ -1,4 +1,4 @@
-package com.randev.food_delivery.screen.sign_in
+package com.randev.food_delivery.screen.auth.sign_in
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
