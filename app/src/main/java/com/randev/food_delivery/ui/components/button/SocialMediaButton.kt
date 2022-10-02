@@ -20,12 +20,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.randev.food_delivery.R
-import com.randev.food_delivery.ui.components.textfield.drawColoredShadow
 import com.randev.food_delivery.ui.theme.FoodDeliveryTheme
 import com.randev.food_delivery.ui.theme.GreyBorderColor
 import com.randev.food_delivery.ui.theme.ShadowColor
 import com.randev.food_delivery.ui.theme.Shapes
 import com.randev.food_delivery.ui.theme.TextColor
+import com.randev.food_delivery.util.drawColoredShadow
 
 /**
  * @author Raihan Arman

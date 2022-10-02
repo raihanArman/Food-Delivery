@@ -42,44 +42,12 @@ import com.randev.food_delivery.ui.theme.GreyTextColor
 import com.randev.food_delivery.ui.theme.ShadowColor
 import com.randev.food_delivery.ui.theme.Shapes
 import com.randev.food_delivery.ui.theme.TextColor
+import com.randev.food_delivery.util.drawColoredShadow
 
 /**
  * @author Raihan Arman
  * @date 27/09/22
  */
-
-@SuppressLint("NewApi")
-fun Modifier.drawColoredShadow(
-    color: Color,
-    alpha: Float = 0.07f,
-    borderRadius: Dp = 0.dp,
-    shadowRadius: Dp = 20.dp,
-    offsetY: Dp = 20.dp,
-    offsetX: Dp = 0.dp
-) = this.drawBehind {
-    val transparentColor = android.graphics.Color.toArgb(color.copy(alpha = 0.0f).value.toLong())
-    val shadowColor = android.graphics.Color.toArgb(color.copy(alpha = alpha).value.toLong())
-    this.drawIntoCanvas {
-        val paint = Paint()
-        val frameworkPaint = paint.asFrameworkPaint()
-        frameworkPaint.color = transparentColor
-        frameworkPaint.setShadowLayer(
-            shadowRadius.toPx(),
-            offsetX.toPx(),
-            offsetY.toPx(),
-            shadowColor
-        )
-        it.drawRoundRect(
-            0f,
-            0f,
-            this.size.width,
-            this.size.height,
-            borderRadius.toPx(),
-            borderRadius.toPx(),
-            paint
-        )
-    }
-}
 
 @Composable
 fun TextFieldCustom(
