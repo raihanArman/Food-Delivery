@@ -3,6 +3,7 @@ package com.randev.food_delivery.ui.components.text
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
@@ -19,14 +20,16 @@ fun TextDescription(
     modifier: Modifier = Modifier,
     text: String,
     textSize: TextUnit,
-    textAlign: TextAlign = TextAlign.Start
+    textColor: Color = TextColor,
+    textAlign: TextAlign = TextAlign.Start,
+    fontWeight: FontWeight = FontWeight.Light
 ) {
     Text(
         modifier = modifier,
         text = text,
-        fontWeight = FontWeight.Light,
+        fontWeight = fontWeight,
         fontSize = textSize,
-        color = TextColor,
+        color = textColor,
         textAlign = textAlign
     )
 }

@@ -15,15 +15,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.randev.food_delivery.R
 import com.randev.food_delivery.data.onBoardingList
+import com.randev.food_delivery.navigation.Screen
 import com.randev.food_delivery.screen.auth.onboarding.components.OnBoardingItem
 import com.randev.food_delivery.ui.components.button.PrimaryButton
 import com.randev.food_delivery.ui.components.space.VerticalSpace
 import com.randev.food_delivery.ui.theme.FoodDeliveryTheme
+import com.randev.food_delivery.util.navigateAndReplaceStartRoute
 import kotlinx.coroutines.launch
 
 /**
@@ -33,7 +37,9 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun OnBoardingScreen() {
+fun OnBoardingScreen(
+    navHostController: NavHostController
+) {
     val scope = rememberCoroutineScope()
     val data = onBoardingList()
     val pagerState = rememberPagerState(pageCount = data.size)
@@ -63,6 +69,8 @@ fun OnBoardingScreen() {
                         scope.launch {
                             pagerState.animateScrollToPage(pagerState.currentPage+1)
                         }
+                    }else {
+                        navHostController.navigateAndReplaceStartRoute(Screen.SignIn.route)
                     }
                 },
                 text = "Next"
@@ -75,6 +83,7 @@ fun OnBoardingScreen() {
 @Composable
 fun PreviewOnBoardingScreen() {
     FoodDeliveryTheme {
-        OnBoardingScreen()
+        val navController = rememberNavController()
+        OnBoardingScreen(navController)
     }
 }

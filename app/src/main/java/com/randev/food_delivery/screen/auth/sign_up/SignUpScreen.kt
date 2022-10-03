@@ -14,6 +14,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,7 +26,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.randev.food_delivery.R
+import com.randev.food_delivery.navigation.Screen
 import com.randev.food_delivery.ui.components.button.PrimaryButton
 import com.randev.food_delivery.ui.components.button.SocialMediaButton
 import com.randev.food_delivery.ui.components.button.TextButtonCustom
@@ -30,6 +37,7 @@ import com.randev.food_delivery.ui.components.space.VerticalSpace
 import com.randev.food_delivery.ui.components.text.TextBold
 import com.randev.food_delivery.ui.components.textfield.TextFieldCustom
 import com.randev.food_delivery.ui.theme.FoodDeliveryTheme
+import com.randev.food_delivery.util.navigateAndReplaceStartRoute
 
 /**
  * @author Raihan Arman
@@ -37,7 +45,22 @@ import com.randev.food_delivery.ui.theme.FoodDeliveryTheme
  */
 
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(
+    navHostController: NavHostController
+) {
+
+    var username by remember {
+        mutableStateOf("")
+    }
+
+    var email by remember {
+        mutableStateOf("")
+    }
+
+    var password by remember {
+        mutableStateOf("")
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -67,8 +90,10 @@ fun SignUpScreen() {
             TextBold(text = "Sign Up For Free", textSize = 20.sp)
             VerticalSpace(height = 40.dp)
             TextFieldCustom(
-                text = "",
-                onTextChanged = {},
+                text = username,
+                onTextChanged = {
+                    username = it
+                },
                 hintText = "Username",
                 leadingIcon = {
                     IconLeading(resource = R.drawable.ic_profile)
@@ -76,8 +101,10 @@ fun SignUpScreen() {
             )
             VerticalSpace(height = 12.dp)
             TextFieldCustom(
-                text = "",
-                onTextChanged = {},
+                text = email,
+                onTextChanged = {
+                    email = it
+                },
                 hintText = "Email",
                 leadingIcon = {
                     IconLeading(resource = R.drawable.ic_message)
@@ -85,8 +112,10 @@ fun SignUpScreen() {
             )
             VerticalSpace(height = 12.dp)
             TextFieldCustom(
-                text = "",
-                onTextChanged = {},
+                text = password,
+                onTextChanged = {
+                    password = it
+                },
                 hintText = "Password",
                 isPasswordTextFieldProvider = {true},
                 leadingIcon = {
@@ -95,9 +124,20 @@ fun SignUpScreen() {
             )
 
             VerticalSpace(height = 36.dp)
-            PrimaryButton(onClick = {}, text = "Login", modifier = Modifier.width(141.dp))
+            PrimaryButton(
+                onClick = {
+                    navHostController.navigateAndReplaceStartRoute(Screen.SignUpProcess.route)
+                },
+                text = "Create Account",
+                modifier = Modifier.width(141.dp)
+            )
             VerticalSpace(height = 20.dp)
-            TextButtonCustom(text = "already have account ?", onClick = {})
+            TextButtonCustom(
+                text = "already have account ?",
+                onClick = {
+                    navHostController.popBackStack()
+                }
+            )
         }
     }
 }
@@ -118,6 +158,7 @@ fun IconLeading(
 @Composable
 fun SignUpPreviewSignInScreen() {
     FoodDeliveryTheme {
-        SignUpScreen()
+        val navHostController = rememberNavController()
+        SignUpScreen(navHostController)
     }
 }

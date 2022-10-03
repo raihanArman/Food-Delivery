@@ -1,16 +1,18 @@
-package com.randev.food_delivery.screen.auth.sign_up
+package com.randev.food_delivery.screen.auth.reset_password
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Button
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,7 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,36 +30,37 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.randev.food_delivery.R
 import com.randev.food_delivery.navigation.Screen
+import com.randev.food_delivery.screen.auth.sign_up.IconLeading
 import com.randev.food_delivery.ui.components.button.BackButton
 import com.randev.food_delivery.ui.components.button.PrimaryButton
-import com.randev.food_delivery.ui.components.space.VerticalSpace
+import com.randev.food_delivery.ui.components.space.HorizontalSpace
 import com.randev.food_delivery.ui.components.text.TextBold
 import com.randev.food_delivery.ui.components.text.TextDescription
 import com.randev.food_delivery.ui.components.textfield.TextFieldCustom
 import com.randev.food_delivery.ui.theme.FoodDeliveryTheme
-import com.randev.food_delivery.util.navigateAndReplaceStartRoute
+import com.randev.food_delivery.ui.theme.ShadowColor
+import com.randev.food_delivery.ui.theme.Shapes
+import com.randev.food_delivery.util.drawColoredShadow
 
 /**
  * @author Raihan Arman
- * @date 02/10/22
+ * @date 03/10/22
  */
 
 @Composable
-fun SignUpProcessScreen(
+fun ResetPasswordScreen(
     navHostController: NavHostController
 ) {
 
-    var firstName by remember {
+
+    var newPass by remember {
         mutableStateOf("")
     }
 
-    var lastName by remember {
+    var confirmPass by remember {
         mutableStateOf("")
     }
 
-    var mobileNumber by remember {
-        mutableStateOf("")
-    }
 
     Box(
         modifier = Modifier
@@ -68,8 +70,7 @@ fun SignUpProcessScreen(
         Image(
             painter = painterResource(id = R.drawable.ic_bg_general),
             contentDescription = null,
-            modifier = Modifier
-                .fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             contentScale = ContentScale.Crop
         )
         Column(
@@ -78,34 +79,34 @@ fun SignUpProcessScreen(
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
             BackButton() {
-                
+
             }
             TextBold(
-                text = "Fill in your bio to get started",
+                text = "Reset your password here",
                 textSize = 25.sp,
                 modifier = Modifier
                     .width(264.dp)
             )
             TextDescription(
-                text = "This data will be displayed in your account profile for security",
+                text = "Select which contact details should we use to reset your password",
                 textSize = 12.sp,
                 modifier = Modifier.width(239.dp)
             )
             TextFieldCustom(
-                text = firstName,
-                onTextChanged = { firstName = it },
-                hintText = "First name"
+                text = newPass,
+                onTextChanged = {
+                    newPass = it
+                },
+                hintText = "New Password",
+                isPasswordTextFieldProvider = {true},
             )
             TextFieldCustom(
-                text = lastName,
-                onTextChanged = { lastName = it },
-                hintText = "Last name"
-            )
-            TextFieldCustom(
-                text = mobileNumber,
-                onTextChanged = { mobileNumber = it },
-                hintText = "Mobile number",
-                keyboardType = KeyboardType.Number
+                text = confirmPass,
+                onTextChanged = {
+                    confirmPass = it
+                },
+                hintText = "Confirm Password",
+                isPasswordTextFieldProvider = {true},
             )
             Spacer(modifier = Modifier.weight(1f))
             Box(
@@ -114,7 +115,7 @@ fun SignUpProcessScreen(
             ){
                 PrimaryButton(
                     onClick = {
-                        navHostController.navigateAndReplaceStartRoute(Screen.SignUpSuccess.route)
+                        navHostController.navigate(Screen.ResetPasswordSuccess.route)
                     },
                     text = "Next"
                 )
@@ -125,9 +126,9 @@ fun SignUpProcessScreen(
 
 @Preview
 @Composable
-fun PreviewSignUpProcessScreen() {
+fun PreviewResetPasswordScreen() {
     FoodDeliveryTheme {
         val navHostController = rememberNavController()
-        SignUpProcessScreen(navHostController)
+        ResetPasswordScreen(navHostController)
     }
 }
