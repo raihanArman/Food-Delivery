@@ -4,12 +4,14 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Colors
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.OutlinedTextField
@@ -43,6 +45,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.randev.food_delivery.R
 import com.randev.food_delivery.ui.theme.FoodDeliveryTheme
 import com.randev.food_delivery.ui.theme.GreyBorderColor
@@ -63,16 +66,18 @@ fun TextFieldCustom(
     text: String,
     onTextChanged: (String) -> Unit,
     hintText: String ?= null,
+    hintTextColor: Color?= null,
     leadingIcon: @Composable (() -> Unit)? = null,
     trailingIcon: @Composable (() -> Unit)? = null,
     keyboardType: KeyboardType = KeyboardType.Text,
     isPasswordTextFieldProvider: () -> Boolean = { false },
+    colors: TextFieldColors ?= null,
 ) {
     val isPasswordVisible = remember {
         mutableStateOf(false)
     }
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(57.dp),
         contentAlignment = Alignment.TopCenter
@@ -84,18 +89,24 @@ fun TextFieldCustom(
             OutlinedTextField(
                 value = text,
                 onValueChange = onTextChanged,
-                colors = TextFieldDefaults.outlinedTextFieldColors(
+                colors = colors ?: TextFieldDefaults.outlinedTextFieldColors(
                     backgroundColor = Color.White,
                     focusedBorderColor = GreyBorderColor,
-                    unfocusedBorderColor = GreyBorderColor
+                    unfocusedBorderColor = GreyBorderColor,
                 ),
                 shape = Shapes.large,
                 placeholder = {
                     if (hintText != null) {
-                        Text(
-                            hintText,
-                            color = GreyTextColor.copy(alpha = 0.3f)
-                        )
+                        Box(
+                            modifier = Modifier.fillMaxHeight(),
+                            contentAlignment = Alignment.Center
+                        ){
+                            Text(
+                                hintText,
+                                color = hintTextColor ?: GreyTextColor.copy(alpha = 0.3f),
+                                fontSize = 14.sp
+                            )
+                        }
                     }
                 },
                 modifier = modifier
