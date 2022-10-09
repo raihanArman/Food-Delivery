@@ -1,4 +1,4 @@
-package com.randev.food_delivery.screen.dashboard.components
+package com.randev.food_delivery.screen.dashboard.home.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement

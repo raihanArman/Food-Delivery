@@ -68,7 +68,7 @@ fun SetupNavGraph(
             ResetPassSuccessScreen()
         }
         composable(Screen.Dashboard.route) {
-            DashboardScreen()
+            DashboardScreen(navController)
         }
     }
 }

@@ -1,13 +1,12 @@
-package com.randev.food_delivery.screen.dashboard.components
+package com.randev.food_delivery.screen.dashboard.home.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.randev.food_delivery.data.Restaurant
+import com.randev.food_delivery.data.Food
 import com.randev.food_delivery.ui.components.space.VerticalSpace
 
 /**
@@ -16,22 +15,26 @@ import com.randev.food_delivery.ui.components.space.VerticalSpace
  */
 
 @Composable
-fun NearestSection(
+fun PopularSection(
     modifier: Modifier = Modifier,
-    restaurants: List<Restaurant>
+    foods: List<Food>
 ) {
     Column(
         modifier = modifier
             .fillMaxWidth()
     ) {
-        TitleItemFood(title = "Nearest Restaurant") {
-
+        TitleItemFood(title = "Popular Menu") {
+            
         }
         VerticalSpace(height = 20.dp)
-        LazyRow {
-            items(restaurants) { index ->
-                RestaurantItem(restaurant = index)
-            }
+        foods.forEach { food ->
+            FoodItem(food = food)
         }
     }
+}
+
+@Preview
+@Composable
+fun PreviewPopularSection() {
+
 }

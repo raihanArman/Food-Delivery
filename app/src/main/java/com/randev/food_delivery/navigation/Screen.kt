@@ -21,4 +21,11 @@ sealed class Screen(
     object ResetPassword: Screen("reset_password")
     object ResetPasswordSuccess: Screen("reset_password_success")
     object Dashboard: Screen("dashboard")
+
+    //Dashboard
+    object Home: Screen("home")
+    object Profile: Screen("profile")
+    object Cart: Screen("cart")
+    object Chat: Screen("chat")
+
 }
